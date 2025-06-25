@@ -8,7 +8,7 @@ import sqlite3
 load_dotenv()
 
 # Initialize FastMCP server
-mcp = FastMCP("UMich MCP")
+mcp = FastMCP("um-mcp")
 
 # Test tool
 @mcp.tool()
