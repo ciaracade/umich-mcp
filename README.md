@@ -2,15 +2,24 @@
 〽️ MCP server for Univeristy of Michigan public APIs.
 
 ## Getting Started
+> [!CAUTION]
+> This is a work in progress and does not currently work.
 
 1. Clone this repository.
 ```
 git clone https://github.com/ciaracade/umich-mcp.git
 ```
 
-2. Follow this guide [here](https://modelcontextprotocol.io/quickstart/user) for Claude Desktop (recommended) or whichever client you are hosting the server on.
+2. Create an `.env` file and input API keys.
+```
+UMICH_API_KEY = 
+UMICH_API_SECRET = 
+USER_AGENT = "um-mcp/0.0"
+```
 
-2. If using Claude Desktop configure MCP server in your `claude_desktop_config.json` like this:
+3. Follow this guide [here](https://modelcontextprotocol.io/quickstart/user) for Claude Desktop (recommended) or whichever client you are hosting the server on.
+
+4. If using Claude Desktop configure MCP server in your `claude_desktop_config.json` like this:
 ```
 {
   "mcpServers": {
@@ -27,9 +36,9 @@ git clone https://github.com/ciaracade/umich-mcp.git
 }
 ```
 
-4. Restart Claude Desktop.
+5. Restart Claude Desktop.
 
-5. If you are experiencing issues with your server, check out the official Claude Desktop Quickstart [here](https://modelcontextprotocol.io/quickstart/user) or [submit an issue](https://github.com/ciaracade/umich-mcp/issues).
+6. If you are experiencing issues with your server, check out the official Claude Desktop Quickstart [here](https://modelcontextprotocol.io/quickstart/user) or [submit an issue](https://github.com/ciaracade/umich-mcp/issues).
 
 ## Contributing
 Contributions are welcome. Due to the nature of the project, only University of Michigan faculty, staff, sponsored affiliates, and students can contribute to this repository. Contributing guide coming soon.
