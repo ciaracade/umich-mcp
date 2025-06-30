@@ -3,7 +3,7 @@
 
 ## Getting Started
 > [!CAUTION]
-> This is a work in progress and does not currently work.
+> This section a WIP and does not currently work. Give us a second...
 
 1. Clone this repository.
 ```
