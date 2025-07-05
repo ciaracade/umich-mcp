@@ -1,20 +1,15 @@
 # umich-mcp
 〽️ MCP server for Univeristy of Michigan public APIs.
 
-## Getting Started
-> [!CAUTION]
-> This section a WIP and does not currently work. Give us a second...
-
 1. Clone this repository.
 ```
 git clone https://github.com/ciaracade/umich-mcp.git
 ```
 
-2. Create an `.env` file and input API keys.
+2. Create an `.env` file and input API key and secret.
 ```
 UMICH_API_KEY = 
 UMICH_API_SECRET = 
-USER_AGENT = "um-mcp/0.0"
 ```
 
 3. Follow this guide [here](https://modelcontextprotocol.io/quickstart/user) for Claude Desktop (recommended) or whichever client you are hosting the server on.
@@ -23,13 +18,11 @@ USER_AGENT = "um-mcp/0.0"
 ```
 {
   "mcpServers": {
-    "um-mcp": {
-      "command": "uv",
+    "umich": {
+      "command": "python3",
       "args": [
         "--directory",
-        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/um-mcp",
-        "run",
-        "server.py"
+        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/umich-mcp/server.py",
       ]
     }
   }
