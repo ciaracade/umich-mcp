@@ -1,5 +1,5 @@
 # umich-mcp
-〽️ MCP server for Univeristy of Michigan public APIs.
+〽️ MCP server for Univeristy of Michigan public APIs. 
 
 1. Clone this repository.
 ```
