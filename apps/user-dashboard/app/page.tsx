@@ -3,28 +3,37 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { EnvVarWarning } from "@/components/env-var-warning";
 import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
 import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
-import { ThreeDMarquee } from "@/components/ui/3d-marquee";
 import Link from "next/link";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { CodeBlock } from "@/components/ui/code-block";
 
 const navigation = [
-  { name: "Features", href: "#" },
-  { name: "Blog", href: "#" },
+  { name: "Features", href: "/blog" },
+  { name: "Blog", href: "/blog" },
 ];
+
+const code = `
+{
+  "mcpServers": {
+    "um-mcp": {
+      "command": "pipx",
+      "args": ["run", "--no-cache", "um-mcp-server"],
+      "env": {
+        "UMMCP_API_KEY": "YOUR_API_KEY",
+        "UMMCP_API_URL": "https://"
+      }
+    }
+  }
+}
+`;
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black">
-      <div className="min-h-screen bg-[#00274C]/40">
+    <div className="min-h-full bg-black">
+      <div className="min-h-full bg-[#00274C]/40">
         <header className="absolute inset-x-0 top-0 z-50">
           <nav
             aria-label="Global"
@@ -57,7 +66,10 @@ export default function Home() {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a href="#" className="text-sm/6 font-semibold text-[#FFCB05]">
+              <a
+                href="/auth/login"
+                className="text-sm/6 font-semibold text-[#FFCB05]"
+              >
                 Log in <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
@@ -72,11 +84,6 @@ export default function Home() {
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">UM MCP</span>
-                  <img
-                    alt=""
-                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
                 </a>
                 <button
                   type="button"
@@ -125,11 +132,11 @@ export default function Home() {
               className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
             />
           </div>
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+          <div className="mx-auto max-w-2xl pt-32">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm/6 text-white ring-1 ring-white/10 hover:ring-gray-900/20">
-                Announcing our next round of funding.{" "}
-                <a href="#" className="font-semibold text-[#FFCB05]">
+              <div className="relative rounded-full px-3 py-1 text-sm/6 text-white ring-1 ring-white/10 hover:ring-white/20">
+                Announcing the best mcp server for wolverines.{" "}
+                <a href="/blog" className="font-semibold text-[#FFCB05]">
                   <span aria-hidden="true" className="absolute inset-0" />
                   Read more <span aria-hidden="true">&rarr;</span>
                 </a>
@@ -139,33 +146,32 @@ export default function Home() {
               <h1 className="text-5xl font-semibold tracking-tight text-balance text-[#FFCB05] sm:text-7xl">
                 UM MCP
               </h1>
-              <p className="mt-8 text-lg font-medium text-pretty text-white sm:text-xl/8">
-                Never
+              <p className=" text-lg font-thin text-pretty text-white sm:text-xl/8">
+                Public UM resources right to your desktop
               </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
+              <div className="mt-5 flex items-center justify-center gap-x-6">
                 <a
-                  href="#"
+                  href="/auth/login"
                   className="rounded-md bg-[#FFCB05] px-3.5 py-2.5 text-sm font-semibold text-[#00274C] shadow-xs hover:bg-[#FFCB05]/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get started
                 </a>
-                <a href="#" className="text-sm/6 font-semibold text-[#FFCB05]">
+                <a
+                  href="/Blog"
+                  className="text-sm/6 font-semibold text-[#FFCB05]"
+                >
                   Learn more <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
-          </div>
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
-            />
+            <div className="max-w-3xl mx-auto w-full pt-5">
+              <CodeBlock
+                language="json"
+                filename="config.json"
+                highlightLines={[8, 9]}
+                code={code}
+              />
+            </div>
           </div>
         </div>
       </div>
